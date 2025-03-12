@@ -1,6 +1,6 @@
 package me.auftraggeber.ipp.server.api.jmdns;
 
-import me.auftraggeber.ipp.server.api.IPPServer;
+import me.auftraggeber.ipp.server.api.IppServer;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +60,7 @@ public class PrinterRegistry implements Closeable {
         return serviceInfo;
     }
 
-    public ServiceInfo register(final IPPServer server) throws IOException {
+    public ServiceInfo register(final IppServer server) throws IOException {
         return register(server.getName(), server.getPort());
     }
 

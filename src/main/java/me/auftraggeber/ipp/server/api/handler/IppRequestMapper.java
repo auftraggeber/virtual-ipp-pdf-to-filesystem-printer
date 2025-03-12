@@ -4,7 +4,7 @@ import com.hp.jipp.encoding.IppInputStream;
 import com.hp.jipp.encoding.IppOutputStream;
 import com.hp.jipp.encoding.IppPacket;
 import com.hp.jipp.model.Operation;
-import me.auftraggeber.ipp.server.api.IPPServer;
+import me.auftraggeber.ipp.server.api.IppServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,14 +16,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
 
-public class IPPRequestMapper implements Runnable {
+public class IppRequestMapper implements Runnable {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(IPPRequestMapper.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(IppRequestMapper.class);
 
-    private final IPPServer server;
+    private final IppServer server;
     private final Socket socket;
 
-    public IPPRequestMapper(final IPPServer server, final Socket socket) {
+    public IppRequestMapper(final IppServer server, final Socket socket) {
         this.server = server;
         this.socket = socket;
     }

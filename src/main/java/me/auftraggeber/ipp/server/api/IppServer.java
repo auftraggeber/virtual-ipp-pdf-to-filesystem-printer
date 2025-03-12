@@ -1,6 +1,6 @@
 package me.auftraggeber.ipp.server.api;
 
-import me.auftraggeber.ipp.server.api.handler.IPPRequestMapper;
+import me.auftraggeber.ipp.server.api.handler.IppRequestMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,14 +8,14 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public abstract class IPPServer implements Closeable {
+public abstract class IppServer implements Closeable {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(IPPServer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(IppServer.class);
 
     private final String name;
     private final ServerSocket serverSocket;
 
-    public IPPServer(final String name, final ServerSocket serverSocket) {
+    public IppServer(final String name, final ServerSocket serverSocket) {
         this.name = name;
         this.serverSocket = serverSocket;
 
@@ -23,7 +23,7 @@ public abstract class IPPServer implements Closeable {
         new Thread(() -> {
             while (!serverSocket.isClosed()) {
                 try {
-                    new Thread(new IPPRequestMapper(this, serverSocket.accept())).start();
+                    new Thread(new IppRequestMapper(this, serverSocket.accept())).start();
                 }
                 catch (IOException e) {
                     LOGGER.error("Error while accepting incoming connection", e);
@@ -33,11 +33,11 @@ public abstract class IPPServer implements Closeable {
         LOGGER.info("Created IPP server: {}", name);
     }
 
-    public IPPServer(final String name) throws IOException {
+    public IppServer(final String name) throws IOException {
         this(name, 0);
     }
 
-    public IPPServer(final String name, final int port) throws IOException {
+    public IppServer(final String name, final int port) throws IOException {
         this(name, new ServerSocket(port));
     }
 

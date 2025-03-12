@@ -1,6 +1,6 @@
 package me.auftraggeber.ipp.server.pdf;
 
-import me.auftraggeber.ipp.server.api.IPPServer;
+import me.auftraggeber.ipp.server.api.IppServer;
 import me.auftraggeber.ipp.server.api.jmdns.PrinterRegistry;
 import me.auftraggeber.ipp.server.pdf.server.PdfIppServer;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class Main {
         }
 
         try (final PrinterRegistry printerRegistry = new PrinterRegistry()) {
-            final IPPServer ippServer = new PdfIppServer(printerName);
+            final IppServer ippServer = new PdfIppServer(printerName);
 
             printerRegistry.register(ippServer);
 
