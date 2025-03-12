@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.langner'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.hp.jipp:jipp-core:0.7.16'
+    implementation 'org.jmdns:jmdns:3.6.0'
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.4.12'
+}
+
+test {
+    useJUnitPlatform()
+}
